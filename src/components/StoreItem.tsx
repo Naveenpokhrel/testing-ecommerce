@@ -7,10 +7,15 @@ type StoreItemProps = {
   imgUrl: string;
 };
 
-export function StoreItems({ id, name, price, imgUrl }:
-    StoreItemProps) {
-        return <Card>
-            <Card.Img variant="top" src={imgUrl} />
-        </Card>
-    }
-) {
+export function StoreItems({ id, name, price, imgUrl }: StoreItemProps) {
+  return (
+    <Card>
+      <Card.Img
+        variant="top"
+        src={imgUrl}
+        height="200px"
+        style={{ objectFit: "cover" }}
+      />
+    </Card>
+  );
+}
