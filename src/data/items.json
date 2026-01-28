@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Classic White T-Shirt",
+    "price": 199,
+    "imgUrl": "/images/white-tshirt.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Blue Denim Jeans",
+    "price": 499,
+    "imgUrl": "/images/denim-jeans.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Red Hoodie",
+    "price": 299,
+    "imgUrl": "/images/red-hoodie.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Black Leather Jacket",
+    "price": 899,
+    "imgUrl": "/images/leather-jacket.jpg"
+  }
+]
