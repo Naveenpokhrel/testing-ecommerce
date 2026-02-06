@@ -10,45 +10,85 @@ type StoreItemProps = {
 };
 
 export function StoreItem({ id, name, price, imgUrl }: StoreItemProps) {
- const { 
-  getItemQuantity, 
-  increaseCartQuantity, 
-  decreaseCartQuantity, 
-  removeFromCart
- } = useShoppingCart()
-  const quantity = getItemQuantity(id)
+  const {
+    getItemQuantity,
+    increaseCartQuantity,
+    decreaseCartQuantity,
+    removeFromCart,
+  } = useShoppingCart();
+
+  const quantity = getItemQuantity(id);
+
   return (
-    <Card className="h-100">
+    <Card
+      className="h-100 border-0 shadow-sm product-card"
+      style={{ borderRadius: "14px", overflow: "hidden" }}
+    >
       <Card.Img
         variant="top"
         src={imgUrl}
-        height="200px"
-        style={{ objectFit: "cover" }}
+        style={{
+          height: "220px",
+          objectFit: "cover",
+        }}
       />
-      <Card.Body className="d-flex flex-column">
-        <Card.Title className="d-flex justify-content-between align-items-baseline mb-4">
-          <span className="fs-4">{name}</span>
-          <span className="ms-2 text-muted">{formatCurrency(price)}</span>
+
+      <Card.Body className="d-flex flex-column p-3">
+        <Card.Title className="d-flex justify-content-between align-items-start mb-3">
+          <span className="fw-semibold fs-5">{name}</span>
+          <span className="text-muted fw-medium">
+            {formatCurrency(price)}
+          </span>
         </Card.Title>
+
         <div className="mt-auto">
           {quantity === 0 ? (
-            <Button className="btn btn-primary w-100" onClick={() => increaseCartQuantity(id)}>Add to Cart</Button>
+            <Button
+              className="w-100 fw-medium"
+              variant="dark"
+              style={{ borderRadius: "10px" }}
+              onClick={() => increaseCartQuantity(id)}
+            >
+              Add to Cart
+            </Button>
           ) : (
             <div
-              className="d-flex align-items-center flex-column"
-              style={{ gap: "0.5rem" }}
+              className="d-flex flex-column align-items-center"
+              style={{ gap: "0.6rem" }}
             >
               <div
-                className="d-flex align-items-center flex-column"
-                style={{ gap: "0.5rem" }}
+                className="d-flex align-items-center justify-content-center"
+                style={{ gap: "0.75rem" }}
               >
-                <Button onClick={() => decreaseCartQuantity(id)}>-</Button>
-                <div>
-                  <span className="fs-3">{quantity}</span> in cart
+                <Button
+                  variant="outline-dark"
+                  size="sm"
+                  onClick={() => decreaseCartQuantity(id)}
+                >
+                  −
+                </Button>
+
+                <div className="fw-semibold">
+                  <span className="fs-5">{quantity}</span> in cart
                 </div>
-                <Button onClick={() => increaseCartQuantity(id)}>+</Button>
+
+                <Button
+                  variant="outline-dark"
+                  size="sm"
+                  onClick={() => increaseCartQuantity(id)}
+                >
+                  +
+                </Button>
               </div>
-              <Button variant="danger" size="sm" onClick={() => removeFromCart(id)}>Remove from Cart</Button>
+
+              <Button
+                variant="outline-danger"
+                size="sm"
+                style={{ borderRadius: "8px" }}
+                onClick={() => removeFromCart(id)}
+              >
+                Remove
+              </Button>
             </div>
           )}
         </div>
